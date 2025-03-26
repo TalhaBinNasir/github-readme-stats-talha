@@ -20,7 +20,7 @@ export default async (req, res) => {
     text_color,
     bg_color,
     theme,
-    cache_seconds,
+    // cache_seconds,
     layout,
     langs_count,
     exclude_repo,
@@ -69,18 +69,19 @@ export default async (req, res) => {
       count_weight,
     );
 
-    let cacheSeconds = parseInt(
-      cache_seconds || CONSTANTS.TOP_LANGS_CACHE_SECONDS,
-      10,
-    );
+    // let cacheSeconds = parseInt(
+    //   cache_seconds || CONSTANTS.TOP_LANGS_CACHE_SECONDS,
+    //   10,
+    // );
     // cacheSeconds = process.env.CACHE_SECONDS
     //   ? parseInt(process.env.CACHE_SECONDS, 10) || cacheSeconds
     //   : cacheSeconds;
 
-    res.setHeader(
-      "Cache-Control",
-      `max-age=${cacheSeconds / 2}, s-maxage=${cacheSeconds}`,
-    );
+    // res.setHeader(
+    //   "Cache-Control",
+    //   `max-age=${cacheSeconds / 2}, s-maxage=${cacheSeconds}`,
+    // );
+    res.setHeader("Cache-Control", "no-cache, must-revalidate");
 
     return res.send(
       renderTopLanguages(topLangs, {
