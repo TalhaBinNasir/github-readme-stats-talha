@@ -73,9 +73,9 @@ export default async (req, res) => {
       cache_seconds || CONSTANTS.TOP_LANGS_CACHE_SECONDS,
       10,
     );
-    cacheSeconds = process.env.CACHE_SECONDS
-      ? parseInt(process.env.CACHE_SECONDS, 10) || cacheSeconds
-      : cacheSeconds;
+    // cacheSeconds = process.env.CACHE_SECONDS
+    //   ? parseInt(process.env.CACHE_SECONDS, 10) || cacheSeconds
+    //   : cacheSeconds;
 
     res.setHeader(
       "Cache-Control",
